@@ -71,12 +71,14 @@ namespace LACountyLibraryBot.Dialogs
                 else if(message.Text.ToLower().Contains("nearest library"))
                 {
                     // Bing API Key
+                    /*
                     var bingAPIKey = "";
                     var options = LocationOptions.UseNativeControl | LocationOptions.ReverseGeocode | LocationOptions.SkipFinalConfirmation;
                     var requiredFields = LocationRequiredFields.StreetAddress | LocationRequiredFields.Locality | LocationRequiredFields.Region | LocationRequiredFields.Country | LocationRequiredFields.PostalCode;
                     var prompt = "Which library location would you like to visit? Please tell me your address.";
                     var locationDialog = new LocationDialog(bingAPIKey, message.ChannelId, prompt, options, requiredFields);
                     context.Call(locationDialog, this.ResumeAfterLocationDialog);
+                    */
                 }
                 else
                 {
@@ -240,7 +242,7 @@ namespace LACountyLibraryBot.Dialogs
 
         private async Task<string> DetectLanguage(string inputText, string accessToken)
         {
-            string url = "http://api.microsofttranslator.com/v2/Http.svc/Detect";
+            string url = "http://api.microsofttranslator.us/v2/Http.svc/Detect";
             string query = $"?text={System.Net.WebUtility.UrlEncode(inputText)}";
 
             using (var client = new HttpClient())
@@ -261,7 +263,7 @@ namespace LACountyLibraryBot.Dialogs
 
         private async Task<string> TranslateText(string inputText, string language, string accessToken)
         {
-            string url = "http://api.microsofttranslator.com/v2/Http.svc/Translate";
+            string url = "http://api.microsofttranslator.us/v2/Http.svc/Translate";
             string query = $"?text={System.Net.WebUtility.UrlEncode(inputText)}&to={language}&contentType=text/plain";
 
             using (var client = new HttpClient())
@@ -282,7 +284,7 @@ namespace LACountyLibraryBot.Dialogs
 
         private async Task<string> GetAuthenticationToken(string key)
         {
-            string endpoint = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+            string endpoint = "https://virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken";
 
             using (var client = new HttpClient())
             {

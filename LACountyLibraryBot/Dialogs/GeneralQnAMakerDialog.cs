@@ -43,7 +43,7 @@ namespace LACountyLibraryBot.Dialogs
 
         private async Task<string> TranslateText(string inputText, string language, string accessToken)
         {
-            string url = "http://api.microsofttranslator.com/v2/Http.svc/Translate";
+            string url = "http://api.microsofttranslator.us/v2/Http.svc/Translate";
             string query = $"?text={System.Net.WebUtility.UrlEncode(inputText)}&to={language}&contentType=text/plain";
 
             using (var client = new HttpClient())
@@ -64,7 +64,7 @@ namespace LACountyLibraryBot.Dialogs
 
         private async Task<string> GetAuthenticationToken(string key)
         {
-            string endpoint = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+            string endpoint = "https://api.cognitive.microsoft.us/sts/v1.0/issueToken";
 
             using (var client = new HttpClient())
             {
